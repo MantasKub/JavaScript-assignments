@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+    // FIRST TASK
+
+    function rand(min, max) {
+      min = Math.ceil(min);
+      max = Math.floor(max);
+      return Math.floor(Math.random() * (max - min + 1) + min);
+    }
+
+    let kiekis = rand(5, 3000);
+
+    console.log('Žvakių nuperkama:', kiekis)
+
+    if (kiekis > 1000 && kiekis < 2000) {
+      console.log('Galutinė kaina:', kiekis - (kiekis *= (0.03)))
+    }
+    else if (kiekis > 2000) {
+      console.log('Galutinė kaina:', kiekis - (kiekis *= (0.04)))
+    }
+    else if (kiekis < 1000) {
+      console.log('Galutinė kaina:', kiekis)
+    }
+
+    // SECOND TASK
+
+    let pirmas = rand(0, 100);
+    let antras = rand(0, 100);
+    let trecias = rand(0, 100);
+
+    console.log('Skaičiai:', pirmas, antras, trecias)
+
+    let suma = pirmas + antras + trecias
+
+    console.log('Skaičių suma:', suma)
+
+    let vidurkis = suma /= 3
+
+    console.log('Aritmetinis vidurkis:', Math.round(vidurkis))
+
+
+    let sum1 = antras + trecias
+    let sum2 = pirmas + trecias
+    let sum3 = pirmas + antras
+
+
+    if ((pirmas < 10 || pirmas > 90) && (antras < 10 || antras > 90)) {
+      console.log('Aritmetinis vidurkis atmetus reikšmes', trecias)
+    }
+    else if ((pirmas < 10 || pirmas > 90) && (trecias < 10 || trecias > 90)) {
+      console.log('Aritmetinis vidurkis atmetus reikšmes', antras)
+    }
+    else if ((antras < 10 || antras > 90) && (trecias < 10 || trecias > 90)) {
+      console.log('Aritmetinis vidurkis atmetus reikšmes', pirmas)
+    }
+    else if (pirmas < 10 || pirmas > 90) {
+      console.log('Aritmetinis vidurkis atmetus reikšmes', Math.round(sum1 /= 2))
+    }
+    else if (antras < 10 || antras > 90) {
+      console.log('Aritmetinis vidurkis atmetus reikšmes', Math.round(sum2 /= 2))
+    }
+    else if (trecias < 10 || trecias > 90) {
+      console.log('Aritmetinis vidurkis atmetus reikšmes', Math.round(sum3 /= 2))
+    }
+    else {
+      console.log('Aritmetinis vidurkis atmetus reikšmes', Math.round(vidurkis))
+    }
+
+
+
+
+
+  </script>
+</body>
+
+</html>

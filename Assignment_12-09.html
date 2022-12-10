@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assignment 12-09</title>
+  <style>
+    body {
+      word-break: break-all;
+    }
+  </style>
+</head>
+
+<body>
+  <script>
+    function rand(min, max) {
+      min = Math.ceil(min);
+      max = Math.floor(max);
+      return Math.floor(Math.random() * (max - min + 1) + min);
+    }
+
+    // -------FIRST TASK-------
+
+    document.write('<h4> FIRST TASK </h4>')
+
+    const raides = 'ABCD';
+    let masyvas = [];
+
+    for (let i = 0; i < 200; i++) {
+      masyvas.push(raides[rand(0, 3)]);
+    }
+
+    document.write(masyvas.sort(), '<br />');
+
+    // THIRD TASK
+
+    document.write('<h4> THIRD TASK </h4>')
+
+    let masyvas1 = []
+    let masyvas2 = []
+    let masyvas3 = []
+
+    for (let i = 0; i < 200; i++) {
+      masyvas1.push(raides[rand(0, 3)]);
+      masyvas2.push(raides[rand(0, 3)]);
+      masyvas3.push(raides[rand(0, 3)]);
+    }
+
+    document.write('Pirmas masyvas: ', masyvas1, '<br />')
+    document.write('<br />', 'Antras masyvas: ', masyvas2, '<br />')
+    document.write('<br />', 'Trečias masyvas: ', masyvas3, '<br />')
+
+
+    let merged = [];
+
+    for (let i = 0; i < 200; i++) {
+      merged.push(masyvas1[i] + masyvas2[i] + masyvas3[i])
+    }
+
+    document.write('<br />Supliusuotos reikšmės: ', merged)
+
+    // ------?????????????????????--------
+
+    // let unikalios = [];
+
+    // for (let i = 0; i < 200; i++) {
+    //   let check = ((merged[i]).includes(('A' || 'B' || 'C' || 'D') >= 2));
+    //   if (check === false) {
+    //     unikalios.push(merged[i])
+    //   }
+    // }
+
+    // console.log(unikalios)
+
+    // FOURTH TASK
+
+    document.write('<h4> FOURTH TASK </h4>')
+
+    let pirmasMasyvas = []
+    let antrasMasyvas = []
+
+
+    for (let i = 0; i < 100; i++) {
+      let number = rand(100, 999);
+      check = pirmasMasyvas.includes(number);
+      if (check === false) {
+        pirmasMasyvas.push(number)
+      } else {
+        if (check === true) {
+          pirmasMasyvas.splice(number)
+        }
+        while (check === true) {
+          number = rand(100, 999);
+          check = pirmasMasyvas.includes(number);
+          if (check === false) {
+            pirmasMasyvas.push(number)
+          }
+        }
+      }
+    }
+
+    document.write('Pirmas masyvas: ', pirmasMasyvas, '<br />')
+
+    for (let i = 0; i < 100; i++) {
+      let number = rand(100, 999);
+      let check = antrasMasyvas.includes(number);
+      if (check === false) {
+        antrasMasyvas.push(number)
+      } else {
+        if (check === true) {
+          antrasMasyvas.splice(number)
+        }
+        while (check === true) {
+          number = rand(100, 999);
+          check = antrasMasyvas.includes(number);
+          if (check === false) {
+            antrasMasyvas.push(number)
+          }
+        }
+      }
+    }
+
+    document.write('<br />Antras masyvas: ', antrasMasyvas, '<br />')
+
+    document.write('<h4> FIFTH TASK </h4>')
+
+    let masyvas5 = []
+
+    for (let i = 0; i < 100; i++) {
+      let number = pirmasMasyvas[i];
+      check = antrasMasyvas.includes(number)
+      if (check === false) {
+        masyvas5.push(number)
+      }
+    }
+
+    document.write('Masyvas su atmestomis reikšmėmis: ', masyvas5)
+
+
+    document.write('<h4> SIXTH TASK </h4>')
+
+    let masyvas6 = []
+
+
+    for (let i = 0; i < 100; i++) {
+      let number = pirmasMasyvas[i];
+      check = antrasMasyvas.includes(number)
+      if (check === true) {
+        masyvas6.push(number)
+      }
+    }
+
+    document.write('Reikšmės kurios kartojasi abiejuose masyvuose: ', masyvas6)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </script>
+</body>
+
+</html>
