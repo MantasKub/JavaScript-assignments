@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assignment</title>
+
+  <style>
+    body {
+      word-break: break-all;
+    }
+  </style>
+</head>
+
+<body>
+  <script>
+
+    function rand(min, max) {
+      min = Math.ceil(min);
+      max = Math.floor(max);
+      return Math.floor(Math.random() * (max - min + 1) + min);
+    }
+
+
+
+    //-------FIRST TASK--------
+
+    document.write('<h4>', 'FIRST TASK <br />', '</h4>')
+    console.log('FIRST TASK')
+
+    let array = [];
+
+    for (let i = 0; i < 10; i++) {
+      array[i] = [];
+      for (let x = 0; x < 5; x++) {
+        const digit = rand(5, 25)
+        array[i].push(digit)
+      }
+    }
+    document.write(array)
+    console.log(array)
+
+
+
+    //-------SECOND TASK--------
+
+    document.write('<h4>', 'SECOND TASK <br />', '</h4>')
+    console.log('SECOND TASK')
+
+    document.write('a', '<br />')
+
+    let count = 0;
+
+    for (let level1 in array) {
+      for (let level2 in array[level1]) {
+        if (array[level1][level2] > 10) {
+          count++;
+        }
+      }
+    }
+
+    // for (let i = 0; i < array.length; i++) {
+    //   for (let x = 0; x < array[i].length; x++) {
+    //     if (array[i][x] > 10) {
+    //       count++
+    //     }
+    //   }
+    // }
+
+    document.write(count)
+    console.log(count)
+
+    document.write('<br/>', 'b', '<br />')
+
+    console.log(Math.max(...array.flat()))
+    document.write(Math.max(...array.flat()))
+
+    document.write('<br/>', 'c', '<br />')
+
+    // let index0 = 0;
+    // let index1 = 0;
+    // let index2 = 0;
+    // let index3 = 0;
+    // let index4 = 0;
+
+
+    // for (let i = 0; i < array.length; i++) {
+    //   for (let x = 0; x < array[i].length; x++)
+    //     if (array[i].indexOf(0)) {
+    //       index0 += array[i][0]
+    //     } if (array[i].indexOf(1)) {
+    //       index1 += array[i][1]
+    //     } if (array[i].indexOf(2)) {
+    //       index2 += array[i][2]
+    //     } if (array[i].indexOf(3)) {
+    //       index3 += array[i][3]
+    //     } if (array[i].indexOf(4)) {
+    //       index4 += array[i][4]
+    //     }
+    // }
+
+    // console.log('Nuliniu indeksu suma yra: ', index0)
+    // console.log('Pirmu indeksu suma yra: ', index1)
+    // console.log('Antru indeksu suma yra: ', index2)
+    // console.log('Treciu indeksu suma yra: ', index3)
+    // console.log('Ketvirtu indeksu suma yra: ', index4)
+
+    const sums = [0, 0, 0, 0, 0];
+
+    for (const value of array) {
+      sums[0] += value[0];
+      sums[1] += value[1];
+      sums[2] += value[2];
+      sums[3] += value[3];
+      sums[4] += value[4];
+    }
+
+    document.write('Masyvu sumos: ', sums)
+
+
+    document.write('<br/>', 'd', '<br />')
+
+    for (let i = 0; i < 10; i++) {
+      array[i] = [];
+      for (let x = 0; x < 7; x++) {
+        const digit = rand(5, 25)
+        array[i].push(digit)
+      }
+    }
+    document.write(array)
+    console.log(array)
+
+    // ----------THIRD TASK---------
+
+    document.write('<h4>', 'THIRD TASK <br />', '</h4>')
+    console.log('THIRD TASK')
+
+    array = []
+    customArray = []
+    array2 = []
+
+
+
+
+    for (let i = 0; i < 10; i++) {
+      array.length = rand(0, 5)
+
+      if (array[i] === 0) {
+        let customArray = rand(0, 10);
+      }
+      else {
+        array2 = [];
+        for (x = 0; x < array.length; x++) {
+          if (array.length > 0) {
+            array2[x] = rand(0, 10)
+          }
+        }
+        customArray.push(array2)
+      }
+    }
+
+    console.log(customArray)
+
+
+
+
+
+
+
+
+
+
+
+  </script>
+</body>
+
+</html>
