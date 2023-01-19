@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OOP Assignment</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="buttons">
+      <button onclick="FillBasket()">Fill Bascet</button>
+      <button onclick="TakeOut()">Take out one fruit</button>
+    </div>
+    <table id="basketTable"></table>
+  </div>
+  <script>
+    function rand(min, max) {
+      min = Math.ceil(min);
+      max = Math.floor(max);
+      return Math.floor(Math.random() * (max - min + 1) + min);
+    }
+
+    // let grauztukai = new map();
+
+    class Vaisius {
+
+      dydis = rand(5, 25);
+      id = rand(1000000, 9999999);
+      prakastas = false;
+
+      prakasti() {
+        this.prakastas = true;
+      }
+    }
+
+    class Krepsys {
+      static vaisiai = [];
+
+
+      static pripildyti() {
+        let x = Krepsys.vaisiai.length;
+        for (let i = x; i < 20; i++) {
+          let vaisius = new Vaisius;
+          this.vaisiai[i] = vaisius;
+        }
+
+        Krepsys.vaisiai.sort((a, b) => {
+          a = a.dydis;
+          b = b.dydis;
+
+          if (a < b)
+            return -1;
+
+          if (a > b)
+            return +1;
+
+          return 0;
+        });
+        return Krepsys.vaisiai
+      }
+
+      static isimti() {
+        let vaisiuKrepsys = Krepsys.vaisiai;
+
+        let paimtas = vaisiuKrepsys.pop();
+
+        console.log(paimtas)
+        console.log(Krepsys.vaisiai)
+
+      }
+    }
+
+    const FillBasket = () => {
+      let array = Krepsys.pripildyti()
+      // basketTable()
+      console.log(array)
+    }
+
+    // const basketTable = () => {
+    //   let x = Krepsys.vaisiai.length;
+    //   let tableBasket = `
+    //     <thead>
+    //       <tr>
+    //         <th>Nr</th>
+    //         <th>id</th>
+    //         <th>Size</th>
+    //         <th>Status</th>
+    //       </tr>
+    //     </thead>`;
+    //   for (i = 0; i < x; i++) {
+    //     tableBasket = tableBasket +
+    //       `
+    //     <tbody>
+    //       <tr>
+    //         <td>${i}</td>
+    //         <td>${Krepsys.vaisiai[i].id}</td>
+    //         <td>${Krepsys.vaisiai[i].dydis}</td>
+    //         <td>${Krepsys.vaisiai[i].prakastas}</td>
+    //       </tr>
+    //     </tbody>
+    //     `;
+    //   }
+    //   document.getElementById('basket-table').innerHTML = tableBasket;
+    // }
+
+
+    const TakeOut = () => {
+      let taken = Krepsys.isimti();
+      console.log(taken)
+    }
+
+
+
+
+
+
+    // Krepsys.pripildyti();
+    // console.log(Krepsys.vaisiai);
+    // Krepsys.isimti()
+    // Krepsys.isimti();
+    // console.log(Krepsys.vaisiai);
+
+
+
+
+
+
+  </script>
+</body>
+
+</html>
