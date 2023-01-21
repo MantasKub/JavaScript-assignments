@@ -1,10 +1,11 @@
 import './App.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const App = () => {
 
-  const [res, SetRes] = useState('')
-  const [passwordLength, SetpasswordLength] = useState(50);
+  const [res, SetRes] = useState('');
+  const [resArray, SetResArray] = useState([]);
+  const [passwordLength, SetpasswordLength] = useState(10);
   const [includeUpperCase, SetIncludeUpperCase] = useState(false);
   const [includeLowerCase, SetIncludeLowerCase] = useState(false);
   const [includeNumbers, SetIncludeNumbers] = useState(false);
@@ -16,8 +17,9 @@ const App = () => {
   const symbols = "!@#$%^&*(){}[]=<>/,.";
 
 
+
   const handleGeneratePassword = (e) => {
-    let characterList = ''
+    let characterList = '';
 
     if (includeLowerCase) {
       characterList = characterList + lowerCaseLetters;
@@ -33,6 +35,9 @@ const App = () => {
     }
 
     SetRes(createPassword(characterList))
+
+    localStorage.setItem('res', JSON.stringify(res));
+
   }
 
   const createPassword = (characterList) => {
@@ -48,14 +53,16 @@ const App = () => {
 
   const handleResetForm = () => {
     SetRes('');
-    SetpasswordLength();
-    SetIncludeUpperCase();
-    SetIncludeLowerCase();
-    SetIncludeNumbers();
-    SetIncludeSymbols();
+    SetpasswordLength(10);
+    SetIncludeUpperCase(false);
+    SetIncludeLowerCase(false);
+    SetIncludeNumbers(false);
+    SetIncludeSymbols(false);
   }
 
-
+  // useEffect(() => {
+  //   console.log(localStorage.getItem('labas'));
+  // }, []);
 
 
   return (
@@ -63,13 +70,10 @@ const App = () => {
       <h3>Generate your password!</h3>
       <div className="container d-flex">
         <div className="generator">
-
-          <div className="password">
-            <input className="main-input input-group-text" type="text" name="result" readOnly value={res} />
-            <button className="generatePsw btn" onClick={handleGeneratePassword}>Generate random password</button>
-          </div>
-          <div className="last_passwords">
-            <table></table>
+          <input className="main-input input-group-text" type="text" name="result" readOnly value={res} />
+          <button className="generatePsw btn" onClick={handleGeneratePassword}>Generate random password</button>
+          <div className="last-passwords">
+            <ul></ul>
           </div>
         </div>
         <div className="side">
@@ -144,9 +148,6 @@ const App = () => {
           </div>
           <button className="reset btn" onClick={handleResetForm}>Reset</button>
         </div>
-      </div>
-      <div className="container">
-        <table></table>
       </div>
     </div>
   );
