@@ -1,15 +1,16 @@
 import './App.css';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import PasswordsList from './PasswordsList';
 
 const App = () => {
 
   const [res, SetRes] = useState('');
-  const [resArray, SetResArray] = useState([]);
   const [passwordLength, SetpasswordLength] = useState(10);
   const [includeUpperCase, SetIncludeUpperCase] = useState(false);
   const [includeLowerCase, SetIncludeLowerCase] = useState(false);
   const [includeNumbers, SetIncludeNumbers] = useState(false);
   const [includeSymbols, SetIncludeSymbols] = useState(false);
+  const [renew, setRenew] = useState(false);
 
   const numbers = '123456789';
   const lowerCaseLetters = "abcdefghijklmnopqrstuvwxyz";
@@ -17,8 +18,7 @@ const App = () => {
   const symbols = "!@#$%^&*(){}[]=<>/,.";
 
 
-
-  const handleGeneratePassword = (e) => {
+  const handleGeneratePassword = () => {
     let characterList = '';
 
     if (includeLowerCase) {
@@ -34,10 +34,13 @@ const App = () => {
       characterList = characterList + symbols;
     }
 
-    SetRes(createPassword(characterList))
+    const password = createPassword(characterList);
 
-    localStorage.setItem('res', JSON.stringify(res));
+    SetRes(password)
 
+    localStorage.setItem('res', JSON.stringify([password]));
+
+    setRenew(!renew);
   }
 
   const createPassword = (characterList) => {
@@ -60,10 +63,6 @@ const App = () => {
     SetIncludeSymbols(false);
   }
 
-  // useEffect(() => {
-  //   console.log(localStorage.getItem('labas'));
-  // }, []);
-
 
   return (
     <div className="app">
@@ -73,7 +72,7 @@ const App = () => {
           <input className="main-input input-group-text" type="text" name="result" readOnly value={res} />
           <button className="generatePsw btn" onClick={handleGeneratePassword}>Generate random password</button>
           <div className="last-passwords">
-            <ul></ul>
+            <PasswordsList renew={renew} />
           </div>
         </div>
         <div className="side">
